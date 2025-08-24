@@ -68,11 +68,11 @@ A user-friendly Streamlit web application for Named Entity Recognition using bot
 NER/
 ├── streamlit_app.py      # Main Streamlit application
 ├── requirements.txt      # Python dependencies
-├── ner_model.pth        # Trained PyTorch model (generated from notebook)
-├── ner_dataset.csv      # Training dataset
-├── ner.ipynb           # Jupyter notebook for training
-└── README.md           # This file
+├── README.md             # This file
+└── .gitignore            # Ignore large/local artifacts
 ```
+
+Note: `ner_model.pth` should be provided at runtime (not committed). Place it next to `streamlit_app.py` on the server or local machine.
 
 ## Troubleshooting
 
