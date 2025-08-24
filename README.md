@@ -1,5 +1,9 @@
 # Named Entity Recognition (NER) Web Application
 
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://named-entity-recognition-analyzer-hv9xy9gzsmusdlwqmbrgat.streamlit.app/)
+
+Live demo: https://named-entity-recognition-analyzer-hv9xy9gzsmusdlwqmbrgat.streamlit.app/
+
 A user-friendly Streamlit web application for Named Entity Recognition using both PyTorch BiLSTM and spaCy models.
 
 ## Features
