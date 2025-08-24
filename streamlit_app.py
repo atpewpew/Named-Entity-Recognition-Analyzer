@@ -151,13 +151,19 @@ def load_model():
 
 @st.cache_resource
 def load_spacy_model():
-    """Load spaCy model"""
+    """Load spaCy model, attempting on-demand install if missing (for cloud)."""
     try:
-        nlp = spacy.load('en_core_web_sm')
-        return nlp
-    except Exception as e:
-        st.error(f"Error loading spaCy model: {str(e)}")
-        return None
+        return spacy.load('en_core_web_sm')
+    except OSError:
+        try:
+            import spacy.cli as spacy_cli
+            with st.spinner("Downloading spaCy model en_core_web_sm (first run only)..."):
+                spacy_cli.download("en_core_web_sm")
+            return spacy.load('en_core_web_sm')
+        except Exception as e:
+            st.error(f"Failed to load/download spaCy model: {e}")
+            st.info("If running on Streamlit Cloud, ensure the model is included in requirements.txt.")
+            return None
 
 def predict_entities(model, text, token2idx, idx2tag, device, max_len=104):
     """Predict entities using the trained model"""
